@@ -15,6 +15,7 @@ gem 'activerecord'
 gem 'bcrypt'
 
 gem 'rake'
+gem 'pry'
 
 
 

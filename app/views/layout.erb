@@ -25,10 +25,15 @@
     <div class='float-right h-100'>
       <nav>
         <ul>
-          <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users/new">register</a></li>
-          <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users/login">login</a></li>
-          <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users">home</a></li>
-          <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/logout">logout</a></li>
+          <% if logged_in? %>
+            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users/logout">logout</a></li>
+            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/">home</a></li>
+            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/"><%= current_user.username %></a></li>
+          <% else %>
+            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users/login">login</a></li>
+            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/">home</a></li>
+            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users/new">register</a></li>
+          <% end %>
         </ul>
       </nav>
     </div>
