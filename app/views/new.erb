@@ -1,0 +1,27 @@
+<ul>
+  <% if @user %>
+    <% unless @user.errors.empty? %>
+      <% @user.errors.full_messages.each do |msg| %>
+      <li class='error_msg'><%= msg %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
+
+<div class='padding-bottom-30 width-500 centered margin-top-100 outline-blue-1'>
+  <div>
+    <h1>Register a new user</h1>
+  </div>
+  <hr>
+  <br>
+  <form class='centered' method='post' action='/users'>
+    <p>Enter your username:</p>
+    <input type='text' name='user[username]'>
+    <p>Enter your email:</p>
+    <input type='text' name='user[email]'>
+    <p>Enter your password:</p>
+    <input type='password' name='user[password]'>
+    <br><br>
+    <input class='button' type='submit' value='Create New User'>
+  </form>
+</div>
