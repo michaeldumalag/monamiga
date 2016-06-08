@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -18,6 +18,21 @@
   <title></title>
 </head>
 <body>
+  <header class='header'>
+    <div class='float-left'>
+      <a href="/"><img class='header-pic' src="monamiga.jpg" alt='pic of mon amiga'></a>
+    </div>
+    <div class='float-right h-100'>
+      <nav>
+        <ul>
+          <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users/new">register</a></li>
+          <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users/login">login</a></li>
+          <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users">home</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <%= yield %>
 </body>
 </html>
