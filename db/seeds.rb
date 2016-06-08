@@ -6,8 +6,8 @@ require 'faker'
                       password: "password")
 end
 
-for i in (1..20) do
+for user_id in (User.minimum(:id)..User.maximum(:id)) do
   question = Question.create!(title: Faker::ChuckNorris.fact,
-                              content: Faker::Hipster.paragraphs,
-                              user_id: "#{i}")
+                              content: Faker::Hipster.paragraph,
+                              user_id: user_id)
 end
