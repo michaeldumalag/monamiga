@@ -41,6 +41,7 @@ nav a {
 
 .float-left {
   float: left;
+  display: inline-block;
 }
 
 .no-margin {
@@ -93,5 +94,14 @@ nav a {
 
 .h-100 {
   height: 100%;
+}
+
+#site-title {
+	float: right;
+	width: 400px;
+	margin-left: 25px;
+	position: relative;
+	display: inline-block;
+	text-decoration: none;
 }
 
