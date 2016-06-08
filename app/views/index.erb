@@ -1,7 +1,7 @@
 <div class="container">
   <% @questions.each do |question| %>
-    <h4><%= question.title %></h4>
-      <%= question.content %>
+	<span class="q-title"><%= question.title %></span>
+	<span class="q-content"><%= question.content %></span>
     <hr>
   <% end %>
 </div>
