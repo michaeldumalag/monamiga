@@ -36,6 +36,16 @@ post '/users/login' do
     status 422
     erb :'login'
   end
+  # user_hash = params[:user]
+  # user = User.authenticate(user_hash[:email], user_hash[:password])
+  # if user
+  #   session[:user_id] = user.id
+  #   redirect '/secret'
+  # else
+  #   @user = User.new(user_hash)
+  #   @user.errors.add(:name, "User does not exist!!!")
+  #   erb :"login"
+  # end
 end
 
 #logout   |get|    /users/logout
