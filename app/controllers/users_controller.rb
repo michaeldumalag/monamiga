@@ -1,5 +1,6 @@
 #index    |get|    /users
 get '/users' do
+  @questions = Question.all
   erb :'index'
 end
 
