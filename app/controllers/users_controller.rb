@@ -1,3 +1,7 @@
+get '/session-viewer' do
+  session.inspect
+end
+
 #index    |get|    /users
 get '/users' do
   @questions = Question.all
@@ -13,7 +17,7 @@ end
 post '/users' do
   @user = User.new(params[:user])
   if @user.save
-    redirect "/user/#{@user.id}"
+    redirect "/users/#{@user.id}"
   else
     status 422
     erb :'new'
@@ -50,40 +54,41 @@ post '/users/login' do
 end
 
 #logout   |get|    /users/logout
-get '/users/logout' do
+get '/logout' do
   @user = User.new()
-  erb :'login'
+  session[:user_id] = nil
+  redirect :'/'
 end
 
 #logout   |post|   /users/logout
 post '/user/logout' do
-  @user = User.new()
-  session[:user_id] = nil
-  redirect '/'
+  # @user = User.new()
+  # session[:user_id] = nil
+  # redirect '/'
 end
 
 #show     |get|    /users/:id
-get '/user/:id' do
+get '/users/:id' do
   @user = User.find(params[:id])
   erb :'show'
 end
 
-#edit     |get|    /users/:id/edit
-get 'users/:id/edit' do
-  @user = User.find(params[:id])
-  erb :'edit'
-end
+# #edit     |get|    /users/:id/edit
+# get 'users/:id/edit' do
+#   @user = User.find(params[:id])
+#   erb :'edit'
+# end
 
-#update   |patch|  /users/:id
-patch 'users/:id' do
-  @user = User.find(params[:id])
-  @user.update_attributes(params[:user])
-  redirect "/user/#{@user.id}"
-end
+# #update   |patch|  /users/:id
+# patch 'users/:id' do
+#   @user = User.find(params[:id])
+#   @user.update_attributes(params[:user])
+#   redirect "/user/#{@user.id}"
+# end
 
-#delete   |delete| /users/:id
-delete 'users/:id' do
-  @user = User.find(params[:id])
-  @user.destroy
-  redirect "/"
-end
+# #delete   |delete| /users/:id
+# delete 'users/:id' do
+#   @user = User.find(params[:id])
+#   @user.destroy
+#   redirect "/"
+# end

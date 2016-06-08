@@ -16,6 +16,8 @@ gem 'bcrypt'
 
 gem 'rake'
 
+
+
 gem 'shotgun'
 gem 'faker', github: 'stympy/faker'
 
