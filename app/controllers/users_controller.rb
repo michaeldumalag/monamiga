@@ -10,32 +10,33 @@ end
 
 #new      |get|    /users/new
 get '/users/new' do
-  erb :'new'
+  erb :'/users/new'
 end
 
 #create   |post|   /users
 post '/users' do
   @user = User.new(params[:user])
   if @user.save
+    session[:user_id] = @user.id
     redirect "/users/#{@user.id}"
   else
     status 422
-    erb :'new'
+    erb :'/users/new'
   end
 end
 
 #login    |get|    /users/:id/login
 get '/users/login' do
   @user = User.new()
-  erb :'login'
+  erb :'/users/login'
 end
 
 #login    |post|   /users/:id
 post '/users/login' do
   @user = User.authenticate(params[:user][:email], params[:user][:password])
   if @user
-    p session[:user_id] = @user.id
-    redirect '/users'
+    session[:user_id] = @user.id
+    redirect "/users/#{@user.id}"
   else
     @error = 'Invalid Login'
     status 422
@@ -54,24 +55,27 @@ post '/users/login' do
 end
 
 #logout   |get|    /users/logout
-get '/logout' do
+get '/users/logout' do
   @user = User.new()
   session[:user_id] = nil
   redirect :'/'
 end
 
-#logout   |post|   /users/logout
-post '/user/logout' do
-  # @user = User.new()
-  # session[:user_id] = nil
-  # redirect '/'
-end
 
 #show     |get|    /users/:id
 get '/users/:id' do
   @user = User.find(params[:id])
-  erb :'show'
+  erb :'/users/show'
 end
+
+
+
+# #logout   |post|   /users/logout
+# post '/users/logout' do
+#   # @user = User.new()
+#   # session[:user_id] = nil
+#   # redirect '/'
+# end
 
 # #edit     |get|    /users/:id/edit
 # get 'users/:id/edit' do
