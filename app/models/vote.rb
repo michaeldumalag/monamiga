@@ -1,4 +1,7 @@
 class Vote < ActiveRecord::Base
-  # Remember to create a migration!
-  belongs_to :voteable, polymorphic: true
+
+  belongs_to	:voteable, polymorphic: true
+
+  validates_uniqueness_of :voteable, scope: :user 
+
 end
