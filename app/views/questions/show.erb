@@ -3,4 +3,10 @@
   <span class="q-title"><%= @question.title %></span>
   <span class="q-content"><%= @question.content %></span>
 
+  <form method='post' action=':id/answers'>
+    <p>Your Answer:</p>
+    <textarea class="textarea-content" name='answer[content]'></textarea>
+    <input class='button' type='submit' value='Submit Answer'>
+  </form>
+
 
