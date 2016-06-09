@@ -26,13 +26,13 @@
       <nav>
         <ul>
           <% if logged_in? %>
-            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users/logout">logout</a></li>
-            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/">home</a></li>
-            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/"><%= current_user.username %></a></li>
+            <li class="no-bullets no-underline padding-right-15"><a class='no-underline' href="/users/logout">logout</a></li>
+            <li class="no-bullets no-underline padding-right-15"><a class='no-underline' href="/">home</a></li>
+            <li class="no-bullets no-underline padding-right-15"><a class='no-underline' href="/users/<%= current_user.id%>">Hello, <%= current_user.username %></a></li>
           <% else %>
-            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users/login">login</a></li>
-            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/">home</a></li>
-            <li class="no-bullets no-underline padding-right-15"><a class=' no-underline' href="/users/new">register</a></li>
+            <li class="no-bullets no-underline padding-right-15"><a class='no-underline' href="/users/login">login</a></li>
+            <li class="no-bullets no-underline padding-right-15"><a class='no-underline' href="/">home</a></li>
+            <li class="no-bullets no-underline padding-right-15"><a class='no-underline' href="/users/new">register</a></li>
           <% end %>
         </ul>
       </nav>

@@ -1,19 +1,9 @@
-get '/session-viewer' do
-  session.inspect
-end
-
-#index    |get|    /users
-# get '/users' do
-#   @questions = Question.all
-#   erb :'index'
-# end
-
-#new      |get|    /users/new
+#new
 get '/users/new' do
   erb :'/users/new'
 end
 
-#create   |post|   /users
+#create
 post '/users' do
   @user = User.new(params[:user])
   if @user.save
@@ -25,12 +15,21 @@ post '/users' do
   end
 end
 
-
-#show     |get|    /users/:id
+#show
 get '/users/:id' do
   @user = User.find(params[:id])
   erb :'/users/show'
 end
+
+
+###################################################
+############## session viewer #####################
+###################################################
+
+get '/session-viewer' do
+  session.inspect
+end
+
 
 ###################################################
 ############## login / logout #####################
@@ -55,11 +54,16 @@ post '/users/login' do
   end
 end
 
-#logout   |get|    /users/logout
+#logout
 get '/users/logout' do
+  p session
+  puts "#{params.inspect}   <--------- params"
   session[:user_id] = nil
-  redirect :'/'
+  redirect '/'
 end
+
+
+###########################################################
 
 # #logout   |post|   /users/logout
 # post '/users/logout' do
