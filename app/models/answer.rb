@@ -5,6 +5,6 @@ class Answer < ActiveRecord::Base
   has_many	 :responses, as: :respondable
   has_many   :votes, as: :voteable
 
-  validates  :question_id, :user_id, presence:true
+  validates  :question_id, :user_id, presence: true
 
 end

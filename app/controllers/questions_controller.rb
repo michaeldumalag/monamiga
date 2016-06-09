@@ -43,3 +43,27 @@ get '/questions/:id/answers' do
   @answers = Question.find(params[:id]).answers
   erb :show
 end
+
+post '/questions/:id/upvote' do
+  @question = Question.find_by(params[:id])
+  vote = Vote.new(value: 1, user_id: session[:user_id])
+  vote.voteable = @question
+  vote.save
+  redirect "/questions/#{params[:id]}"
+end
+
+post '/questions/:id/downvote' do
+  @question = Question.find_by(params[:id])
+  vote = Vote.new(value: -1, user_id: session[:user_id])
+  vote.voteable = @question
+  vote.save
+  redirect "/questions/#{params[:id]}"
+end
+
+
+
+
+
+
+
+
