@@ -211,3 +211,18 @@ nav a {
   text-decoration: underline;
 }
 
+.begin-answer-column {
+  font-size: 1.3em;
+  color: gray;
+  border-bottom: solid gray 2px;
+  display: block;
+}
+
+.answer-box {
+  padding-top: 40px;
+}
+
+.ans-details {
+  float: right;
+}
+
