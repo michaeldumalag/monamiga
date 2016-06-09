@@ -226,3 +226,22 @@ nav a {
   float: right;
 }
 
+.upvote-button {
+  height: 20px;
+  width: 20px;
+}
+
+.downvote-button {
+  height: 20px;
+  width: 20px;
+}
+
+.num-of-votes {
+  margin: 2px;
+  padding-left: 4px;
+}
+
+.voting-buttons {
+  float: left;
+  margin-right: 10px;
+}
