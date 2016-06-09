@@ -9,4 +9,10 @@ class Question < ActiveRecord::Base
   validates  :title, presence: true
   validates  :content, presence: true
 
+
+  def votes_sum
+  	self.votes.reduce(0){ |sum, vote| sum += vote.value }
+  end
 end
+
+
