@@ -2,17 +2,12 @@
   <a href="/questions/new"><button class='new-q-button'>Submit a New Question</button></a>
   <div class="user_page questions">
 	<h1>Questions you've asked:</h1>
-  <%if @user.questions.length == 1%>
-		<% @user.questions.each do |question| %>
-			<span class="q-title"><%= question.title %></span>
-			<span class="q-content"><%= question.content %></span>
-  	<% end %>
-  <% else %>
+  <%if @user.questions.any? %>
     <% @user.questions.each do |question| %>
-      <span class="q-title"><%= question.title %></span>
-      <span class="q-content"><%= question.content %></span>
+      <span class="q-title"><a href="/question/<%= question.id %>"><%= question.title %></a></span>
+			<span class="q-content"><%= question.content %></span>
       <hr>
-    <% end %>
+  	<% end %>
   <% end %>
 	</div>
 </div>
