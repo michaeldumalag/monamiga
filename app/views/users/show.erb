@@ -4,7 +4,7 @@
 	<h1>Questions you've asked:</h1>
   <%if @user.questions.any? %>
     <% @user.questions.each do |question| %>
-      <span class="q-title"><a href="/question/<%= question.id %>"><%= question.title %></a></span>
+      <span class="q-title"><a href="/questions/<%= question.id %>"><%= question.title %></a></span>
 			<span class="q-content"><%= question.content %></span>
       <hr>
   	<% end %>
