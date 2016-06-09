@@ -1,3 +1,16 @@
+#logout
+get '/users/logout' do
+  session[:user_id] = nil
+  redirect '/'
+end
+
+#logout   |post|   /users/logout
+# post '/users/logout' do
+#   # @user = User.new()
+#   # session[:user_id] = nil
+#   # redirect '/'
+# end
+
 #new
 get '/users/new' do
   erb :'/users/new'
@@ -54,23 +67,9 @@ post '/users/login' do
   end
 end
 
-#logout
-get '/users/logout' do
-  p session
-  puts "#{params.inspect}   <--------- params"
-  session[:user_id] = nil
-  redirect '/'
-end
-
 
 ###########################################################
 
-# #logout   |post|   /users/logout
-# post '/users/logout' do
-#   # @user = User.new()
-#   # session[:user_id] = nil
-#   # redirect '/'
-# end
 
 # #edit     |get|    /users/:id/edit
 # get 'users/:id/edit' do
