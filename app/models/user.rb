@@ -2,10 +2,13 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 
+  has_many  :questions
+  has_many  :answers
+  has_many  :responses
+  has_many  :votes
+
   validates :username, :email, :password_hash, presence: true
   validates :email, uniqueness: true
-
-  has_many :questions
 
   def password
     @password ||= BCrypt::Password.new(password_hash)
