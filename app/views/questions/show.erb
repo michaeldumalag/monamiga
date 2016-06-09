@@ -3,4 +3,22 @@
   <span class="q-title"><%= @question.title %></span>
   <span class="q-content"><%= @question.content %></span>
 
+  <% if @question.answers.any?  %>
+    <span class='begin-answer-column'><%= @question.answers.count %> Answers</span> <br><br>
+      <% @question.answers.each do |answer| %>
+    <div class='answer-box'>
+        <span class="ans-content"><%= answer.content %></span><br>
+        <span class="ans-details">Answered by '<%= answer.user.username %>' on <%= answer.created_at %></span><br>
+        <hr>
+    </div>
+    <% end %>
+  <% end %>
+
+  <form method='post' action='/questions/<%= @question.id  %>/answers'>
+    <p>Your Answer:</p>
+    <textarea class="textarea-content" name='content'></textarea>
+    <input type="hidden" name="question_id" value=<%= @question.id  %>>
+    <input class='button' type='submit' value='Submit Answer'>
+  </form>
+
 

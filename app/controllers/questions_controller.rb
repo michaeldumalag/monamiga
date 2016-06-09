@@ -31,3 +31,15 @@ post '/questions' do
     erb :'/questions/new'
   end
 end
+
+post '/questions/:id/answers' do
+  @answer = Answer.new(content: params[:content], question_id: params[:question_id])
+  @answer.user_id = current_user.id
+  @answer.save
+  redirect "/questions/#{@answer.question.id}"
+end
+
+get '/questions/:id/answers' do
+  @answers = Question.find(params[:id]).answers
+  erb :show
+end
