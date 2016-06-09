@@ -1,0 +1,22 @@
+<div class='padding-bottom-30 width-500 centered margin-top-100 outline-blue-1'>
+<div>
+  <h1>Submit a New Question</h1>
+  <p>See tips for writing a good question <a href="http://stackoverflow.com/help/how-to-ask"><span id='form-good-questions-link'>here</span></a></p>
+</div>
+  <hr>
+  <br>
+  <ul>
+  <% if @question %>
+    <% @question.errors.full_messages.each do |error| %>
+      <li class='error-msg'><%= error %></li>
+    <% end %>
+  <% end %>
+  </ul>
+  <form method='post' action='/questions/new'>
+    <p>Title of your question:</p>
+    <textarea class="textarea-title" name='question[title]'></textarea>
+    <p>Details specifying your problem and desired outcome. Be specific!:</p>
+    <textarea class="textarea-content" name='question[content]'></textarea>
+    <input class='button' type='submit' value='Submit Question'>
+  </form>
+</div>

@@ -1,12 +1,3 @@
-<ul>
-  <% if @user %>
-    <% unless @user.errors.empty? %>
-      <% @user.errors.full_messages.each do |msg| %>
-      <li class='error_msg'><%= msg %></li>
-      <% end %>
-    <% end %>
-  <% end %>
-</ul>
 
 <div class='padding-bottom-30 width-500 centered margin-top-100 outline-blue-1'>
   <div>
@@ -14,9 +5,18 @@
   </div>
   <hr>
   <br>
+  <ul>
+    <% if @user %>
+      <% unless @user.errors.empty? %>
+        <% @user.errors.full_messages.each do |msg| %>
+        <li class='error-msg'><%= msg %></li>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
   <form class='centered' method='post' action='/users'>
     <p>Enter your username:</p>
-    <input type='text' name='user[username]'>
+    <input autofocus type='text' name='user[username]'>
     <p>Enter your email:</p>
     <input type='text' name='user[email]'>
     <p>Enter your password:</p>

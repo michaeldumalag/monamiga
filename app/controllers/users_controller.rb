@@ -1,3 +1,25 @@
+###################################################
+############## login / logout #####################
+###################################################
+
+#login    |get|    /users/:id/login
+get '/users/login' do
+  erb :'/users/login'
+end
+
+#login    |post|   /users/:id
+post '/users/login' do
+  @user = User.authenticate(params[:user][:email], params[:user][:password])
+  if @user
+    session[:user_id] = @user.id
+    redirect "/users/#{@user.id}"
+  else
+    @error = 'Invalid Login'
+    status 422
+    erb :'login'
+  end
+end
+
 #logout
 get '/users/logout' do
   session[:user_id] = nil
@@ -41,30 +63,6 @@ end
 
 get '/session-viewer' do
   session.inspect
-end
-
-
-###################################################
-############## login / logout #####################
-###################################################
-
-#login    |get|    /users/:id/login
-get '/users/login' do
-  @user = User.new()
-  erb :'/users/login'
-end
-
-#login    |post|   /users/:id
-post '/users/login' do
-  @user = User.authenticate(params[:user][:email], params[:user][:password])
-  if @user
-    session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
-  else
-    @error = 'Invalid Login'
-    status 422
-    erb :'login'
-  end
 end
 
 
