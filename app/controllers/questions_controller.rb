@@ -6,7 +6,12 @@ end
 
 # new
 get '/questions/new' do
-  erb :'/questions/new'
+  if current_user
+    erb :'/questions/new'
+  else
+    status 403
+    erb :'403'
+  end
 end
 
 # show
@@ -15,8 +20,8 @@ get '/questions/:id' do
   erb :'/questions/show'
 end
 
-# delete - TODO
-post '/questions/:id' do
+# create - TODO
+post '/questions' do
   @question = Question.new(params[:question])
   @question.user_id = current_user.id
   if @question.save

@@ -16,7 +16,7 @@ post '/users/login' do
   else
     @error = 'Invalid Login'
     status 422
-    erb :'login'
+    erb :'/users/login'
   end
 end
 

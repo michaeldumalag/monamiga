@@ -21,6 +21,10 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: #4790A0;
+}
+
 header div {
   display: inline-block;
 }
@@ -131,7 +135,7 @@ nav a {
 
 #monamiga {
   color: white;
-  text-shadow: 2px 2px blue;
+  text-shadow: 2px 2px #4790A0;
   font-family: cursive;
 }
 
@@ -200,6 +204,7 @@ nav a {
 .error-msg {
   color: red;
   text-align: left;
+  padding-left: 20px;
 }
 
 #form-good-questions-link {
