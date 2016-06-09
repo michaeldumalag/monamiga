@@ -31,3 +31,9 @@ post '/questions' do
     erb :'/questions/new'
   end
 end
+
+post '/questions/:id/answers' do
+  @answer = Answer.new(params[:answer])
+  @answer.user_id = current_user.id
+  erb :show
+end
