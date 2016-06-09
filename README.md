@@ -1,8 +1,8 @@
 ## As a user...
 
-...I would like to be able to login to my account
+~~...I would like to be able to login to my account~~
 
-...I would like to be able to see a list of all possible questions
+~~...I would like to be able to see a list of all possible questions~~
 
 ...I would like to be able to click on a question to see it and its current answers
 

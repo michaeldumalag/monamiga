@@ -3,10 +3,10 @@ get '/session-viewer' do
 end
 
 #index    |get|    /users
-get '/users' do
-  @questions = Question.all
-  erb :'index'
-end
+# get '/users' do
+#   @questions = Question.all
+#   erb :'index'
+# end
 
 #new      |get|    /users/new
 get '/users/new' do
@@ -25,6 +25,17 @@ post '/users' do
   end
 end
 
+
+#show     |get|    /users/:id
+get '/users/:id' do
+  @user = User.find(params[:id])
+  erb :'/users/show'
+end
+
+###################################################
+############## login / logout #####################
+###################################################
+
 #login    |get|    /users/:id/login
 get '/users/login' do
   @user = User.new()
@@ -42,33 +53,13 @@ post '/users/login' do
     status 422
     erb :'login'
   end
-  # user_hash = params[:user]
-  # user = User.authenticate(user_hash[:email], user_hash[:password])
-  # if user
-  #   session[:user_id] = user.id
-  #   redirect '/secret'
-  # else
-  #   @user = User.new(user_hash)
-  #   @user.errors.add(:name, "User does not exist!!!")
-  #   erb :"login"
-  # end
 end
 
 #logout   |get|    /users/logout
 get '/users/logout' do
-  @user = User.new()
   session[:user_id] = nil
   redirect :'/'
 end
-
-
-#show     |get|    /users/:id
-get '/users/:id' do
-  @user = User.find(params[:id])
-  erb :'/users/show'
-end
-
-
 
 # #logout   |post|   /users/logout
 # post '/users/logout' do
