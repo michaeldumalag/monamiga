@@ -1,9 +1,24 @@
 <div>
   <a href="/questions/new"><button class='new-q-button'>Submit a New Question</button></a>
 </div>
+
+
 <div class='questions'>
   <% @questions.each do |question| %>
-   <a href="/questions/<%= question.id %>"><span class="q-title"><%= question.title %></span></a>
-   <span class="q-content"><%= question.content %></span>
+  <div>
+    <div class="voting-buttons">
+      <div class="upvote-button">
+      <a href="/"><img class='upvote-button' src="/up-arrow.png" alt='upvote'>
+      </a>
+      </div>
+      <p class='num-of-votes'><%=  %>0</p>
+      <div class="upvote-button">
+      <a href="/"><img class='downvote-button' src="/down-arrow.png" alt='upvote'>
+      </a>
+      </div>
+    </div>
+    <a href="/questions/<%= question.id %>"><span class="q-title"><%= question.title %></span></a>
+    <span class="q-content"><%= question.content %></span>
+  </div>
   <% end %>
 </div>
