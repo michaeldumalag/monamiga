@@ -68,7 +68,45 @@ get '/questions/:id/downvote' do
 end
 
 
+post '/questions/:id/responses' do
+  question = Question.find(params[:id])
+  Response.create!(respondable_id: question.id, respondable_type: 'Question', user_id: session[:user_id], content: params[:content] )
+  redirect "/questions/#{question.id}"
+end
 
+
+# ANSWERS CONTROLLER
+
+
+
+post '/answers/:id/responses' do
+  answer = Answer.find(params[:id])
+  Response.create!(respondable_id: answer.id, respondable_type: 'Answer', user_id: session[:user_id], content: params[:content] )
+  redirect "/questions/#{answer.question_id}"
+end
+
+# get '/answers/:id/upvote' do
+#   p "Got to request"
+#   @answer = Answer.find(params[:id])
+#   vote = Vote.new(value: 1, user_id: session[:user_id])
+#   vote.voteable = @answer
+#   vote.save
+
+#   if request.xhr?
+#     p "Got to xhr"
+#     {count: @answer.votes.sum(:value).to_s}.to_json
+#   else
+#     redirect "/questions/#{params[:id]}"
+#   end
+# end
+
+# get '/answer/:id/downvote' do
+#   @answer = Answer.find(params[:id])
+#   vote = Vote.new(value: -1, user_id: session[:user_id])
+#   vote.voteable = @answer
+#   vote.save
+#   redirect "/questions/#{params[:id]}"
+# end
 
 
 

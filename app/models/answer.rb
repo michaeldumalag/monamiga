@@ -7,4 +7,8 @@ class Answer < ActiveRecord::Base
 
   validates  :question_id, :user_id, presence: true
 
+
+  def answers_sum
+  	self.votes.reduce(0){ |sum, vote| sum += vote.value }
+  end
 end

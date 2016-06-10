@@ -245,3 +245,11 @@ nav a {
   float: left;
   margin-right: 10px;
 }
+
+.question-response {
+  margin-left: 2em;
+}
+
+.answer-response {
+  margin-left: 2em;
+}
