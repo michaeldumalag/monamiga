@@ -12,14 +12,48 @@
     <a href="/questions/<%= @question.id %>""><span class="q-title"><%= @question.title %></span></a>
     <span class="q-content"><%= @question.content %></span>
   </div>
+
+  <% @question.responses.each do |response| %>
+    <p class="question-response"><em><%= response.content %></em></p>
+  <% end %>
+
+  <form action="/questions/<%= @question.id %>/responses" method="POST">
+    <input type="text" name="content" placeholder="Respond to a question">
+    <input type="submit" value="Add Response">
+  </form>
+<!-- start of answers to questions -->
+
+
   <% if @question.answers.any?  %>
     <span class='begin-answer-column'><%= @question.answers.count %> Answers</span> <br><br>
       <% @question.answers.each do |answer| %>
     <div class='answer-box'>
+
+
+
+<!--         <div class="voting-buttons-for-answers">
+          <div>
+            <a href="/answers/<%= answer.id %>/upvote" class="upvote-button" id="<%= answer.id %>"><img class='upvote-button' src="/up-arrow.png" alt='upvote'></a>
+          </div>
+          <p class='num-of-votes'><%= answer.answers_sum %></p>
+          <div class="downvote-button">
+            <a href="/answers/<%= answer.id %>/downvote"><img class='downvote-button' src="/down-arrow.png" alt='downvote'></a>
+          </div>
+        </div> -->
+
+
         <span class="ans-content"><%= answer.content %></span><br>
         <span class="ans-details">Answered by '<%= answer.user.username %>' on <%= answer.created_at %></span><br>
         <hr>
-    </div>
+          <% answer.responses.each do |response| %>
+          <p class="answer-response"><em><%= response.content %></em></p>
+          <% end %>
+
+          <form action="/answers/<%= answer.id %>/responses" method="POST">
+            <input type="text" name="content" placeholder="Respond to an answer">
+            <input type="submit" value="Add Response">
+          </form>
+      </div>
     <% end %>
   <% end %>
 

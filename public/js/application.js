@@ -22,4 +22,23 @@ $(document).ready(function() {
 			$(".num-of-votes").text(response.count);
 		});
   });
+
+
+  // $(".voting-buttons-for-answers").on("click", "a.upvote-button", function(event){
+		// event.preventDefault();
+
+		// var answerId = $(this).attr('id');
+		// var button = $(this);
+
+		// $.ajax({
+		// 	type: 'GET',
+		// 	url: '/answers/'+answerId+'/upvote',
+		// 	dataType: 'JSON'
+		// })
+		// .done(function(response){
+		// 	// console.log($(".num-of-votes"))
+		// 	// console.log($(button).parent().closest('p.num-of-votes'));
+		// 	$(".num-of-votes").text(response.count);
+		// });
+  // });
 });
