@@ -4,4 +4,22 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
+  $(".voting-buttons").on("click", "a.upvote-button", function(event){
+		event.preventDefault();
+
+		var questionId = $(this).attr('id');
+		var button = $(this);
+
+		$.ajax({
+			type: 'GET',
+			url: '/questions/'+questionId+'/upvote',
+			dataType: 'JSON'
+		})
+		.done(function(response){
+			// console.log($(".num-of-votes"))
+			// console.log($(button).parent().closest('p.num-of-votes'));
+			$(".num-of-votes").text(response.count);
+		});
+  });
 });
