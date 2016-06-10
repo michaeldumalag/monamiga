@@ -1,8 +1,8 @@
   <a href="/questions/new"><button class='new-q-button'>Submit a New Question</button></a>
   <div class="user_page questions">
     <div class="voting-buttons">
-      <div class="upvote-button">
-        <a href="/questions/<%= @question.id %>/upvote"><img class='upvote-button' src="/up-arrow.png" alt='upvote'></a>
+      <div>
+        <a href="/questions/<%= @question.id %>/upvote" class="upvote-button" id="<%= @question.id %>"><img class='upvote-button' src="/up-arrow.png" alt='upvote'></a>
       </div>
       <p class='num-of-votes'><%= @question.votes_sum %></p>
       <div class="downvote-button">

@@ -45,11 +45,18 @@ get '/questions/:id/answers' do
 end
 
 get '/questions/:id/upvote' do
+  p "Got to request"
   @question = Question.find(params[:id])
   vote = Vote.new(value: 1, user_id: session[:user_id])
   vote.voteable = @question
   vote.save
-  redirect "/questions/#{params[:id]}"
+
+  if request.xhr?
+    p "Got to xhr"
+    {count: @question.votes.sum(:value).to_s}.to_json
+  else
+    redirect "/questions/#{params[:id]}"
+  end
 end
 
 get '/questions/:id/downvote' do
