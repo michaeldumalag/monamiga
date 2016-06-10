@@ -45,7 +45,7 @@ get '/questions/:id/answers' do
 end
 
 get '/questions/:id/upvote' do
-  @question = Question.find_by(params[:id])
+  @question = Question.find(params[:id])
   vote = Vote.new(value: 1, user_id: session[:user_id])
   vote.voteable = @question
   vote.save
@@ -53,7 +53,7 @@ get '/questions/:id/upvote' do
 end
 
 get '/questions/:id/downvote' do
-  @question = Question.find_by(params[:id])
+  @question = Question.find(params[:id])
   vote = Vote.new(value: -1, user_id: session[:user_id])
   vote.voteable = @question
   vote.save

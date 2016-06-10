@@ -4,15 +4,6 @@
 	  <h1>Questions you've asked:</h1>
     <%if @user.questions.any? %>
       <% @user.questions.each do |question| %>
-        <div class="voting-buttons">
-          <div class="upvote-button">
-            <a href="/questions/<%= question.id %>/upvote"><img class='upvote-button' src="/up-arrow.png" alt='upvote'></a>
-          </div>
-          <p class='num-of-votes'><%= question.votes_sum %></p>
-          <div class="downvote-button">
-          <a href="/questions/<%= question.id %>/downvote"><img class='downvote-button' src="/down-arrow.png" alt='downvote'></a>
-          </div>
-        </div>
         <a href="/questions/<%= question.id %>""><span class="q-title"><%= question.title %></span></a>
         <span class="q-content"><%= question.content %></span>
       </div>
